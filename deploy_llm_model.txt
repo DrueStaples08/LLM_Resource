@@ -1,0 +1,45 @@
+How to move LLM into production for NLP tasks?
+
+1. Model Selection and Training
+    1. Choose the right model for the appropriate task
+    2. Fine-Tune or train model 
+2. Infrastructure setup
+    1. Choose Cloud Service
+    2. Ensure the cloud resources are sufficient enough for model workloads
+3. Model Deployment
+    1. Containerization of model with Docker, S3/Artifact Registry
+    2. Further Deploy with Kubernetes and a virtual server (e.g. Compute Engine) for managing containers and scaling application (load balancer and auto-scaling)
+4. API Development
+    1. Build a Flask app that calls the docker container image (ml model) for serving model inference
+    2. Load Balancing: Implement load balancing to evenly distribute incoming requests to multiple instances (pods)
+5. Monitoring and Logging
+    1. Monitor model performance, latency (user request delays), and uptime (assurance that network is working for users to make requests). Tools include Prometheus and Grafana
+    2. Setup logging which will help track and analyze errors and usage patterns. Tools include ELK stack (Elasticsearch, Logstash, Kibana) 
+6. Scaling
+    1. Horizontal Scaling: Add more instances (pods) to handle the number of workloads
+    2. Vertical Scaling: Increasing the size of GPUs (or CPUs) to handle the size of workloads.
+7. Security
+    1. Authentication and Authorization: Implement OAuth2.0 for extra layer of verification to help secure API
+    2. Data Encryption: Use HTTPS to protect data (whether its being transferred or not)
+8. Model Optimization
+    1. Reduce Latency by refactoring pipelines using efficient data structures.
+    2. Managing Cost via monitoring and optimizing resources that are being billed to company 
+9. Maintenance and Updates:
+    1. Setup a CI/CD pipeline (GitHub Actions, cloud functions and source repositories) for automated testing and deployment so code (new model versions) runs through a series of tests before being merged to main branch, moved to the dev environment, then to the production environment.
+    2. Update model with new data to prevent model drift. Model drifts involves two types of drifts: data drift and concept drift. Concept drift is when the relationship between the features and the target change. Data drift is when the features change.
+
+Tools and Technologies
+* Containerization and Orchestration: Docker, Kubernetes
+* API Development: Flask, FastAPI, Django
+* Monitoring and Logging: Prometheus, Grafana, ELK Stack
+* CI/CD: Jenkins, GitHub Actions, GitLab CI
+* Security: OAuth2.0, HTTPS, JWT
+
+Example Workflow
+1. Development: Train and fine-tune your model locally.
+2. Containerization: Create a Docker image of your application.
+3. Deployment: Deploy the Docker image on a Kubernetes cluster.
+4. API: Expose the model through a RESTful API.
+5. Monitoring: Set up monitoring and logging.
+6. Scaling: Implement horizontal and vertical scaling based on demand.
+7. Maintenance: Use CI/CD pipelines for automated testing and deployment.
