@@ -1,0 +1,20 @@
+Databricks Walkthrough
+
+
+What is Databricks?
+Databricks is a UI platform for distributed data analysis and deployement. This allows developers to work with hundreds of millions 
+of rows of data with a fast computation time. Also it contains tools for automated training, deployement, 
+scaling, monitoring, and logging. 
+
+
+What is AutoML? 
+Integrated with Databricks, AutoML is a tool used to help pick the best models and hyperparameters based on the data that's used as 
+input.
+
+What is MLFlow?
+This tool is very versatile used for automated deployment, scaling, monitoring and logging. It's a simple as going to the 
+UI and creating a cluster then setting up AutoML with a min and max number of nodes.
+
+ 
+
+ 
